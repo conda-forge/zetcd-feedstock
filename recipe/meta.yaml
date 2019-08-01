@@ -7,7 +7,7 @@
 
 package:
   name: {{ name|lower }}
-  version: v{{ version }}
+  version: {{ version }}
 
 source:
   - folder: {{ pkg_src }}
@@ -15,11 +15,12 @@ source:
     git_tag: v{{ version }}
 
 build:
-  number: 0
+  number: 1
   script:
     - pushd {{ pkg_src }}
     - go install -v
-        -ldflags "-w -X {{pkg_src}}/version.Version={{ version }} -X {{pkg_src}}/version.SHA={{ GIT_FULL_HASH }}"
+        -ldflags "-w -X {{import_path}}/version.Version={{ version }} 
+                     -X {{import_path}}/version.SHA={{ GIT_FULL_HASH }}"
         ./cmd/...
 
 requirements:
