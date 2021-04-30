@@ -15,7 +15,7 @@ source:
     git_tag: v{{ version }}
 
 build:
-  number: 2
+  number: 3
   script:
     - pushd {{ pkg_src }}
     - go install -v
@@ -45,6 +45,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - mxr-conda
     - adbeda
     - rluria14
     - oblute
