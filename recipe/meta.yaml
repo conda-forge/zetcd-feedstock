@@ -15,12 +15,12 @@ source:
     git_tag: v{{ version }}
 
 build:
-  number: 3
+  number: 4
   script:
     - pushd {{ pkg_src }}
     - go install -v
-        -ldflags "-w -X {{import_path}}/version.Version={{ version }} 
-                     -X {{import_path}}/version.SHA={{ GIT_FULL_HASH }}"
+        -ldflags "-w -X {{ import_path }}/version.Version={{ version }} 
+                     -X {{ import_path }}/version.SHA={{ GIT_FULL_HASH }}"
         ./cmd/...
 
 requirements:
